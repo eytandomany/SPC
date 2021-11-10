@@ -1,0 +1,25 @@
+AverageInteraction	0.068579
+ClustersReported	12
+CharDist	0.089495
+DataFile	3Conc.dat
+Dimentions	2
+DirectedGrowth	
+Dimensions	2
+KNearestNeighbours	11
+MinTemp	0.00
+MaxTemp	0.10
+MSTree	
+NumberOfPoints	4800
+NumberOfEdges	21228
+NearestNeighbrs	8.845000
+OutFile	3cout
+PottsSpins	20
+RandomSeed	951312273
+SusceptColors	4
+SaveSuscept	
+SWCycles	2000
+SWFraction	0.800000
+ThresholdTheta	0.500000
+TempStep	0.005
+WriteLables	
+WriteLabels	
