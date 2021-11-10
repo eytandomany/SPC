@@ -1,2 +1,0 @@
-# SPC
-Super paramagnetic Clustering
