@@ -26,7 +26,7 @@ double Distance_Linf(int D, double *X, double *Y);
 RaggedArray EdgeDistance( int D, UIRaggedArray NK, double **X );
 void DistanceToInteraction( RaggedArray M, UIRaggedArray NK, UIRaggedArray KN );
 
-/* aux.c */
+/* aux1.c */
 void InitialSpinConfig(int N, unsigned int *Spin, int Q);
 void NewSpinConfig( int N, unsigned int  *Spin, unsigned int *Block, 
 		    int NBlk, int Q, unsigned int *NewSpinValue);
