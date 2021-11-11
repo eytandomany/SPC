@@ -14,7 +14,7 @@
    \item[Spin] Spin[i] is the spin value ascociated with vertex i.
    \end{itemize}
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void  InitialSpinConfig(int N, unsigned int *Spin, int Q)
 {
@@ -45,7 +45,7 @@ void  InitialSpinConfig(int N, unsigned int *Spin, int Q)
    \item[Spin] Spin[i] is the new spin value ascociated with vertex i.
    \end{itemize}
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void NewSpinConfig(          
    int            N,           
@@ -80,7 +80,7 @@ void NewSpinConfig(
        between vertices i and NK.p[i][j] when their spin values are equal.
    \end{itemize}
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void DeletionProbabilities( float T, RaggedArray J, RaggedArray P )
 {
@@ -119,7 +119,7 @@ void DeletionProbabilities( float T, RaggedArray J, RaggedArray P )
    \item[nb] the number of frozen bonds.
    \end{itemize}
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 int SetBond( RaggedArray P, unsigned int *Spin, CRaggedArray Bond,
              UIRaggedArray NK, UIRaggedArray KN){
@@ -163,7 +163,7 @@ int SetBond( RaggedArray P, unsigned int *Spin, CRaggedArray Bond,
    \subsection{Return value}
    the number of clusters.
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 int  Coarsening(CRaggedArray Bond, unsigned int *Block,
                 UIRaggedArray NK, unsigned int *ClusterSize,
@@ -222,7 +222,7 @@ int  Coarsening(CRaggedArray Bond, unsigned int *Block,
         to their new numbers.
    \end{itemize}
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void  OrderingClusters(     
   int            N,          
@@ -273,7 +273,7 @@ void  OrderingClusters(
    \subsection{Description}
    Check evironment parameters in order to prevent runtime error.
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void CheckParam()
 {
@@ -295,7 +295,7 @@ void CheckParam()
    \subsection{Description}
    Set default values to environmrnt parameters.
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 void DefaultParam()
 {
@@ -322,7 +322,7 @@ void DefaultParam()
    \subsection{Return value}
    the energy
    \subsection{file}
-   aux.c
+   aux1.c
 **/
 double Energy( unsigned int* Block, RaggedArray J, UIRaggedArray NK  )
 {
