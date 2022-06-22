@@ -2,7 +2,7 @@
 
 CC = gcc
 
-CFLAGS =  -O3 
+CFLAGS =  -O3 -fPIC
 EFILE =  ./SW
 SHAREDLIB =  spclib
 
@@ -11,10 +11,10 @@ OBJ  =  RaggedArray.o aux1.o aux2.o edge.o distance.o io.o param.o timer.o utili
 all: clean rmlib $(SHAREDLIB)
 
 $(SHAREDLIB): $(OBJ) spclib.c
-	$(CC) spclib.c $(OBJ) $(CFLAGS) -shared  -fPIC -o $(SHAREDLIB).so -lm
+	$(CC) spclib.c $(OBJ) $(CFLAGS) -shared -o $(SHAREDLIB).so -lm
 
 $(EFILE): $(OBJ) SW.c
-	$(CC) SW.c $(OBJ) $(CFLAGS) -o $(EFILE) -lm
+	$(CC) SW.c $(OBJ) $(CFLAGS) -o $(EFILE) -lm 
 
 aux1.o aux2.o edge.o distance.o io.o: SW.h
 timer.o: timer.h
