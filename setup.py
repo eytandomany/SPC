@@ -5,7 +5,7 @@ from setuptools  import find_packages
 import sys
 from os import chdir
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 from distutils.util import get_platform
 
 try:
@@ -27,7 +27,7 @@ class MyBuild(DistutilsBuild):
       if subprocess.call(['make','makelib']) != 0:
             sys.exit(-1)
       chdir('..')
-      
+
 long_description = open("README.md").read()
 
 setup(name='spclustering',

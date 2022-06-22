@@ -58,7 +58,7 @@ class SPC():
         
         ntemp = self.temp_vector.shape[0]
 
-        classes = np.zeros((ntemp,data_points),dtype=c_uint, order="C")
+        classes = np.ascontiguousarray(np.zeros((ntemp,data_points),dtype=c_uint, order="C"))
 
         new_param = (f"NumberOfPoints: {data_points}\n"
                 f"OutFile: {self.output_name}\n"
@@ -87,7 +87,7 @@ class SPC():
 
 
         if return_sizes:
-            sizes = np.zeros((ntemp,self.ncl_reported),dtype=c_uint, order="C")
+            sizes = np.ascontiguousarray(np.zeros((ntemp,self.ncl_reported),dtype=c_uint, order="C"))
 
         res = spclib.spc(input_data, new_param.encode(),
             cast(np.ctypeslib.as_ctypes(classes),uintPtr ),
