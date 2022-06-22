@@ -37,11 +37,13 @@ plt.plot(*data[results[temp,:]>1,:].T,'.k')
 
 ```
 
-## Limitations
+## Limitations and Changes
 
-- It runs with a data matrix [npoints, ndims] as input. Running the clustering from a distance matrix is not implemented yet.
+- It runs with a data matrix [npoints, ndims] as input. Running the clustering from a distance matrix is not implemented.
 
-- Only the main parameters and flags are implemented (for now).
+- Only the main parameters and flags are implemented.
+
+- Tmax (stop temperature) is not included in the temperature array (similar to Python ```range```). 
 
 ## Original SPC Citation
 

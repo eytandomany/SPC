@@ -15,7 +15,7 @@ def test_SPC():
     data = np.concatenate([cl1,cl2])
 
     clustering = SPC(mintemp=0.0,maxtemp=0.03)
-    results, sizes = clustering.run(data,return_sizes=True)
+    results, sizes = clustering.run(data, return_sizes=True)
     assert sum(results[0,:]==0) == sizes[0,0]
     assert sum(results[1,:]==1) == sizes[1,1]
     

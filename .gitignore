@@ -1,6 +1,7 @@
 .vscode/
 *.o
 *.so
+*.pyc
 build/
 dist/
 spclustering.egg-info/

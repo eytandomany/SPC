@@ -58,7 +58,7 @@ class SPC():
         
         ntemp = self.temp_vector.shape[0]
 
-        classes = np.zeros((ntemp,data_points),dtype=np.uint, order="C")
+        classes = np.zeros((ntemp,data_points),dtype=c_uint, order="C")
 
         new_param = (f"NumberOfPoints: {data_points}\n"
                 f"OutFile: {self.output_name}\n"
@@ -80,13 +80,14 @@ class SPC():
                 "Timing~\n" 
                 ) 
         
-        ct_arr = np.ctypeslib.as_ctypes(data)
+        ct_arr = np.ctypeslib.as_ctypes(data.astype(c_double, order='C',copy=False)) 
+        
         doublePtrArr = doublePtr * data_points
         input_data = cast(doublePtrArr(*(cast(row, doublePtr) for row in ct_arr)), doublePtrPtr)
 
 
         if return_sizes:
-            sizes = np.zeros((ntemp,self.ncl_reported),dtype=np.uint, order="C")
+            sizes = np.zeros((ntemp,self.ncl_reported),dtype=c_uint, order="C")
 
         res = spclib.spc(input_data, new_param.encode(),
             cast(np.ctypeslib.as_ctypes(classes),uintPtr ),
