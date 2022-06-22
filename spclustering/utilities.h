@@ -1,7 +1,12 @@
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
-#define INF 9e999
+#define INF INFINITY
+// #ifdef INFINITY
+// #define INF INFINITY
+// #endif
+#include <string.h>
+
 #define assure(expr,message)                            \
         if      (expr) ;                                \
         else error("at line %d of '%s': %s",__LINE__,__FILE__,message);

@@ -1,6 +1,7 @@
 #include "utilities.h"
 #include "SW.h"
 
+
 /**
    \section{ReadEdgeFile}
    \subsection{Description}
@@ -193,7 +194,7 @@ UIRaggedArray knn( int N, int D, double** X ) {
      similiarity=(GetParam("DataIsInteraction")!=NULL);
 
      if(K>N)
-       error("How can it be that K > N ?! Do you think I have time for your nonsense ?");
+       error("K > N ");
      
      
      /* Ordering of the neighbours - O(N^2 logN)*/

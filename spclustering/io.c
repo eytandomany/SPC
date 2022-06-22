@@ -328,6 +328,33 @@ void WriteLabels(char* pe,int nth,int nT,float T,int N,unsigned int *Block)
    fclose( out );
 }
 
+void ReadParamFromStr(char* param_str)
+{
+   char s[PARAM_MAX_FIELD+50],
+        n[PARAM_MAX_FIELD+1], ac;
+   int l;
+   s[0] = 0;
+   ac = 0;
+   while( sscanf( param_str, "%s", s ) != EOF ) {
+      l=strlen(s);
+      param_str = param_str + (l+1);
+      if(!(l)) continue;
+      if( ac==':' ) {
+	 if( s[l-1]!=':' && s[l-1]!='~' && s[l-1]!='|' )
+	    SetParam( n, s );
+	 else SetParam( n, NULL );
+      }
+      ac = s[l-1];
+      s[l-1] = 0;
+      if( ac==':' ) strcpy( n, s );
+      if( ac=='|' ) SetParam( s, NULL );
+      if(  ac=='~' ) UnsetParam( s );
+      s[0] = 0;
+   }
+   if( ac==':' ) SetParam( n, NULL );
+}
+
+
 void ReadParam( int argc, char* argv[] )
 {
    char file[PARAM_MAX_FIELD+100],s[PARAM_MAX_FIELD+50],

@@ -79,6 +79,7 @@ void PrintSizes(char* pe,int nth,int nT,float T,int nc,
 		unsigned int *Size,int n_cols);
 void WriteLabels(char* pe,int nth,int nT,float T,int N,unsigned int *Block);
 void ReadParam( int argc, char* argv[] );
+void ReadParamFromStr(char* param_str);
 void PrintParam();
 void WriteEdges( UIRaggedArray nk );
 void PrintTime( float T );
