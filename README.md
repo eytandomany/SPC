@@ -45,6 +45,10 @@ plt.plot(*data[results[temp,:]>1,:].T,'.k')
 
 - Tmax (stop temperature) is not included in the temperature array (similar to Python ```range```). 
 
+- Included *WriteEdges* boolean parameter (defaul False). If True, the \*.edges/\*.mst/\*.K file is created as in the original SPC. Added aswell *PrintParam* parameter in the legacy SW.c code.
+
+- Reduces/removes console ouputs.
+
 ## Original SPC Citation
 
 Blatt, M., Wiseman, S., & Domany, E. (1996). Superparamagnetic clustering of data. Physical review letters, 76(18), 3251.

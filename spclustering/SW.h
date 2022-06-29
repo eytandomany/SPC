@@ -22,6 +22,7 @@ void OrderEdges( UIRaggedArray *nk );
 
 /* distance.c */
 double Distance(int D, double *X, double *Y);
+double Squared_Distance(int D, double *X, double *Y);
 double Distance_Linf(int D, double *X, double *Y);
 RaggedArray EdgeDistance( int D, UIRaggedArray NK, double **X );
 void DistanceToInteraction( RaggedArray M, UIRaggedArray NK, UIRaggedArray KN );

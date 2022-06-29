@@ -119,7 +119,8 @@ char cflag = 1;			/* Continue run flag */
   if( GetParam( "EdgeFile") ) ReadEdgeFile( N, &NK );
   OrderEdges( &NK ); /* Edges *must* be ordered when calling SetBond() */
   KN = InvertEdges( NK );
-  WriteEdges( NK );
+  if( GetParam( "WriteEdges" ) )
+   WriteEdges( NK );
   J = EdgeDistance( D, NK, X );
   assure( IGetParam( "NumberOfEdges" ) > 0, "no edges" );
 
@@ -128,9 +129,8 @@ char cflag = 1;			/* Continue run flag */
   if ( !GetParam( "DataIsInteraction" ) )
      DistanceToInteraction( J, NK, KN );
   FSetParam( "AverageInteraction", AverageInteraction(J) );
-
-  PrintParam();
-
+  if ( GetParam( "PrintParam" ) )
+   PrintParam();
   /* Memory allocations: */
   CorrN = InitUIRaggedArray(NK);
   Bond = InitCRaggedArray(NK);
@@ -224,7 +224,6 @@ char cflag = 1;			/* Continue run flag */
 	  }
        }
      } /********************* END MC LOOP *********************/
-
      if( save_averages ) {
         ClusterAverage(ncy,N,Size1,Size2); 
 	PrintAverages(nT,T,E/ncy,EE/ncy,(float)nc1/(float)ncy,Size1);

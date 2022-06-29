@@ -13,6 +13,19 @@ double Distance(int D, double *X, double *Y) {
   }
   return( sqrt(dist) );
 } 
+/* -------------------------------------------------------------------- */
+/*  Distance: returns the squared  euclidean distance between data poins i and j */
+/* -------------------------------------------------------------------- */
+double Squared_Distance(int D, double *X, double *Y) {
+  int d;
+  double dist = 0.0;
+  double diff;
+  for (d = 0; d <  D; d++){
+    diff = X[d] - Y[d]; 
+    dist += diff * diff;
+  }
+  return(dist);
+} 
 
 /* -------------------------------------------------------------------- */
 /*  Distance_Linf: returns the L-infinity distance between data poins i */

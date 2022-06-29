@@ -21,8 +21,8 @@
 **/
 
 void ReadEdgeFile( int N, UIRaggedArray *nk ) {
-   int i, j, v0, v1, *cf, fusion;
-   unsigned int *pp;
+   int i, j, v0, v1, fusion;
+   unsigned int *pp, *cf;
    char **edgeset;
    FILE* in;
 
@@ -202,7 +202,7 @@ UIRaggedArray knn( int N, int D, double** X ) {
        if(D != 0) {
 	 for(j = 0; j < N; j++)
 	   dist[j] = metric ?
-	     Distance(D,X[i],X[j]) 
+	     Squared_Distance(D,X[i],X[j]) 
 	     : Distance_Linf(D,X[i],X[j]);
        } else {
 	 for(j = 0; j < N; j++)
@@ -331,28 +331,28 @@ void mstree(int N,int D, double** X, unsigned int** edg) {
     ml = INF;
     for(j=0;j<(N-i-1);j++) {
       if (D)
-	d = metric ?
-	  Distance(D,X[u],X[V[j]]) 
-	  : Distance_Linf(D,X[u],X[V[j]]);
+        d = metric ?
+          Squared_Distance(D,X[u],X[V[j]]) 
+          : Distance_Linf(D,X[u],X[V[j]]);
       else
-	d = X[u][V[j]];
-      /*      if (similarity)
-	      d = -d; */
-     if (d<=L[j]) {
-	L[j] = d;
-	label[j]=u;
+	      d = X[u][V[j]];
+      if (d<=L[j]) {
+        L[j] = d;
+        label[j]=u;
       }
       if (L[j]<=ml) {
-	ml = L[j];
-	mi = j;
+        ml = L[j];
+        mi = j;
       }
     }
-    edg[i][0] = label[mi]; edg[i][1] = V[mi];
+    edg[i][0] = label[mi]; 
+    edg[i][1] = V[mi];
     u = V[mi];
     V[mi] = V[N-i-2];
     L[mi] = L[N-i-2];
     label[mi] = label[N-i-2];
   }
+  free(V); free(L); free(label);
 }
 /* -------------------------------------------------------------------- */
 

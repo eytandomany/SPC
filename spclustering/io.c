@@ -292,13 +292,6 @@ void PrintSizes(char* pe,int nth,int nT,float T,int nc,
    fprintf(out,"\n"); 
 
    fclose(out);
-   
-   printf("%s: ",ext);
-   printf("%8.5f    ", T);
-   printf("%5d    ", nc );
-   for(i = 0; i < NS || ( MinSize && (Size[i]>=MinSize) ); i++) 
-      printf("%5d   ",Size[i] );
-   printf("\n"); 
 }
 
 void WriteLabels(char* pe,int nth,int nT,float T,int N,unsigned int *Block) 

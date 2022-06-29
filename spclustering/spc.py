@@ -38,20 +38,23 @@ class SPC():
         self.savesuscept_char = _bool2char(False)
         self.writefpsum_char = _bool2char(False)
         self.writesizes_char = _bool2char(False)
+        self.writeedges_char = _bool2char(False)
 
     @property
     def temp_vectr(self):
         return self.temp_vector
     
-    def config_additional_outputs(self, output_name, writelabels,  writecorfile, 
-        savesuscept, writefpsum, writesizes):
-        self.output_name = output_name,
-        self.writelabels_char = _bool2char(writelabels)
-        self.writecorfile_char = _bool2char(writecorfile)
-        self.savesuscept_char = _bool2char(savesuscept)
-        self.writefpsum_char = _bool2char(writefpsum)
-        self.writesizes_char = _bool2char(writesizes)
-        
+    def config_additional_outputs(self, output_name, writelabels=None,  writecorfile=None, 
+        savesuscept=None, writefpsum=None, writesizes=None,writeedges=None):
+        self.output_name = output_name
+
+        if writelabels is not None: self.writelabels_char = _bool2char(writelabels)
+        if writecorfile is not None: self.writecorfile_char = _bool2char(writecorfile)
+        if savesuscept is not None: self.savesuscept_char = _bool2char(savesuscept)
+        if writefpsum is not None: self.writefpsum_char = _bool2char(writefpsum)
+        if writesizes is not None: self.writesizes_char = _bool2char(writesizes)
+        if writeedges is not None: self.writeedges_char = _bool2char(writeedges)
+
     def run(self, data, return_sizes=False):
         dim = data.shape[1]
         data_points = data.shape[0]
@@ -76,6 +79,7 @@ class SPC():
                 f"SaveSuscept{self.savesuscept_char}\n"
                 f"WriteFPSum{self.writefpsum_char}\n"
                 f"WriteSizes{self.writesizes_char}\n"
+                f"WriteEdges{self.writeedges_char}\n"
                 f"ForceRandomSeed: {self.randomseed}\n"
                 "Timing~\n" 
                 ) 

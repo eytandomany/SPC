@@ -106,7 +106,8 @@ char cflag = 1;			/* Continue run flag */
   if( GetParam( "EdgeFile") ) ReadEdgeFile( N, &NK );
   OrderEdges( &NK ); /* Edges *must* be ordered when calling SetBond() */
   KN = InvertEdges( NK );
-  //WriteEdges( NK ); commented by FC, TODO this could be a parameter
+  if( GetParam( "WriteEdges" ) )
+   WriteEdges( NK );
   J = EdgeDistance( D, NK, X );
   assure( IGetParam( "NumberOfEdges" ) > 0, "no edges" );
 
@@ -188,34 +189,33 @@ char cflag = 1;			/* Continue run flag */
        if( FPCorr.n || GetParam("WriteFPSum") ) FourPointCorrelation(FPCorr,NK,Block);
 
        if( save_suscept || save_averages )
-	  OrderClusterSize( nc, ClusterSize );
+	      OrderClusterSize( nc, ClusterSize );
        if( save_averages ) {
-	  nc1 += nc;
-	  e = Energy( Block, J, NK );
-	  E += e;
-	  EE += e*e;
-	  for(i = 0; i < nc; i++){
-	     Size1[i] += (float)(ClusterSize[i]); 
-	     Size2[i] += (float)(ClusterSize[i] * ClusterSize[i]); 
-	  }
+         nc1 += nc;
+         e = Energy( Block, J, NK );
+         E += e;
+         EE += e*e;
+         for(i = 0; i < nc; i++){
+            Size1[i] += (float)(ClusterSize[i]); 
+            Size2[i] += (float)(ClusterSize[i] * ClusterSize[i]); 
+         }
        }
        if( save_suscept ) {
-	  Magnetization(N, Q, nc, ClusterSize, mag, UIWorkSpc);
-	  for(i=0;i<Q;i++) {
-	     M1[i] += mag[i];  
-	     M2[i] += mag[i]*mag[i]; 
-	  }
+         Magnetization(N, Q, nc, ClusterSize, mag, UIWorkSpc);
+         for(i=0;i<Q;i++) {
+            M1[i] += mag[i];  
+            M2[i] += mag[i]*mag[i]; 
+         }
        }
      } /********************* END MC LOOP *********************/
-
      if( save_averages ) {
-        ClusterAverage(ncy,N,Size1,Size2); 
-	PrintAverages(nT,T,E/ncy,EE/ncy,(float)nc1/(float)ncy,Size1);
+         ClusterAverage(ncy,N,Size1,Size2); 
+	      PrintAverages(nT,T,E/ncy,EE/ncy,(float)nc1/(float)ncy,Size1);
      }
 
      if( save_suscept ) {
-        Susceptibility(Q,ncy,M1,M2,xi);
-	PrintMagnet(nT,T,M1,xi);
+      Susceptibility(Q,ncy,M1,M2,xi);
+	   PrintMagnet(nT,T,M1,xi);
      }
      
      if( GetParam( "WriteCorFile" ) ) NNPrintCorrN(nT,T,CorrN,ncy,NK);
